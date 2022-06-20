@@ -6,3 +6,4 @@ To run:
 - over index.html hit Ctrl + Shift + P on Windows or Cmd + Shift + P on MacOS
 - type into the search bar `Live` and select `Live Server: Open with Live Server`
 - you should be set! try out the program with as many cities as you like.
+- (May 2022)
