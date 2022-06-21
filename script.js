@@ -1,5 +1,5 @@
 let weather = {
-    "apiKey": "476586d174af6b78b295f81b28486ebb",
+    "apiKey": "WEATHER API KEY",
     fetchWeather: function(city, state, country) {
         if(city.indexOf(' ') >= 0){
             city = city.split(" ").join("%20");
@@ -43,7 +43,7 @@ let weather = {
 
 let geocode = {
     reverseGeoCode: function(latitude, longitude) {
-        var api_key = '93e9333898a94e389628d08c3faf8c1f';
+        var api_key = 'GEOCODE API KEY';
         var api_url = 'https://api.opencagedata.com/geocode/v1/json'
 
         var request_url = api_url +
