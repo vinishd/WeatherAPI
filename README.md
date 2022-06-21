@@ -1,6 +1,6 @@
 - https://vinishd-weatherapi.netlify.app/
 - Search paramters are city, state / province abbreviation (if there is one), and country abbreviation- separated by a comma and space.
+- This prevents confusion during searching (Ex: Portland, ME, US & Portland, OR, US)
 - An example of a search would be: San Francisco, CA, US or Paris, FR (Capitalization not necessary)
-- - This prevents confusion during searching (Ex: Portland, ME, US & Portland, OR, US)
 - You may have to enable location permissions
 - (May 2022)
