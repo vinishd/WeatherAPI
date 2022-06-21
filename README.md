@@ -1,5 +1,5 @@
 - https://vinishd-weatherapi.netlify.app/
-- If the search is for a city within the United States, please input the city, state, and US- separated by a comma and space
+- If the search is for a city within the United States, please input the city, state, and US- separated by a comma and space (Capitalization not necessary)
 - This prevents confusion during searching (Ex: Portland, Maine & Portland, Oregon)
 - You may have to enable location permissions
 - (May 2022)
