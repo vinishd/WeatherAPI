@@ -4,4 +4,4 @@
 - An example of a search would be: San Francisco, CA, US or Paris, FR
 - You may have to enable location permissions
 - Data from https://openweathermap.org/
-- May 2022 (Revised June 2022)
+- May 2022 (Improved June 2022)
