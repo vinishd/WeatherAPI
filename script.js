@@ -1,11 +1,11 @@
 let weather = {
     "apiKey": "WEATHER API KEY",
-    fetchWeather: function(city, state, country) {
+    fetchWeather: function(city, state) {
         if(city.indexOf(' ') >= 0){
             city = city.split(" ").join("%20");
         }
         fetch(
-                "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",%20" + state + ",%20" + country + "&appid=" + this.apiKey + "&units=imperial"
+                "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",%20" + state + ",%20" + "US" + "&appid=" + this.apiKey + "&units=imperial"
                 // city + ,ca,us&appid=045c4399401e3a6baa98e07274bd581f
                 // "https://api.openweathermap.org/data/2.5/weather?q=" +
                 // city +
