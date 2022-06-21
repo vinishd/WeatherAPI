@@ -1,5 +1,6 @@
 - https://vinishd-weatherapi.netlify.app/
-- If the search is for a city within the United States, please input the city, state, and US- separated by a comma and space (Capitalization not necessary)
-- This prevents confusion during searching (Ex: Portland, Maine & Portland, Oregon)
+- Search paramters are city, state / province abbreviation (if there is one), and country abbreviation- separated by a comma and space.
+- An example of a search would be: San Francisco, CA, US or Paris, FR (Capitalization not necessary)
+- - This prevents confusion during searching (Ex: Portland, ME, US & Portland, OR, US)
 - You may have to enable location permissions
 - (May 2022)
