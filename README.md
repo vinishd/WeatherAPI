@@ -1,3 +1,10 @@
+- To run locally:
+- 
+- 
+- 
+- 
+- 
+- 
 - https://vinishd-weatherapi.netlify.app/
 - You may have to enable location permissions
 - (May 2022)
