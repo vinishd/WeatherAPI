@@ -1,11 +1,16 @@
 let weather = {
     "apiKey": "476586d174af6b78b295f81b28486ebb",
-    fetchWeather: function(city) {
+    fetchWeather: function(city, state, country) {
+        if(city.indexOf(' ') >= 0){
+            city = city.split(" ").join("%20");
+        }
         fetch(
-                "https://api.openweathermap.org/data/2.5/weather?q=" +
-                city +
-                "&units=imperial&appid=" +
-                this.apiKey
+                "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",%20" + state + ",%20" + country + "&appid=" + this.apiKey + "&units=imperial"
+                // city + ,ca,us&appid=045c4399401e3a6baa98e07274bd581f
+                // "https://api.openweathermap.org/data/2.5/weather?q=" +
+                // city +
+                // "&units=imperial&appid=" +
+                // this.apiKey
             )
             .then((response) => response.json())
             .then((data) => this.displayWeather(data));
@@ -18,8 +23,8 @@ let weather = {
         const { temp_min } = data.main;
         const { temp_max } = data.main;
         const { pressure } = data.main;
-        const { country } = data.sys;
-        document.querySelector(".city").innerText = "Weather in " + name + ", " + country;
+        // const { country } = data.sys;
+        document.querySelector(".city").innerText = "Weather in " + name;
         document.querySelector(".icon").src = "https://openweathermap.org/img/wn/" + icon + ".png";
         document.querySelector(".description").innerText = description;
         document.querySelector(".temperature").innerText = temp + "°F";
@@ -89,7 +94,7 @@ let geocode = {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(success, console.error);
         } else {
-            weather.fetchWeather("San Francisco");
+            weather.fetchWeather("San Francisco, CA, US");
         }
     }
 };
