@@ -5,35 +5,40 @@ let weather = {
             city = city.split(" ").join("%20");
         }
         fetch(
-                "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",%20" + state + ",%20" + country + "&appid=" + this.apiKey + "&units=imperial"
-                // city + ,ca,us&appid=045c4399401e3a6baa98e07274bd581f
-                // "https://api.openweathermap.org/data/2.5/weather?q=" +
-                // city +
-                // "&units=imperial&appid=" +
-                // this.apiKey
+                "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "," + state + "," + country + "&cnt=1&appid=" + this.apiKey + "&units=imperial"
             )
             .then((response) => response.json())
-            .then((data) => this.displayWeather(data));
+            .then((data) => this.displayWeather(data))
+        fetch(
+            "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state + "," + country + "&appid=" + this.apiKey + "&units=imperial"
+        )
+        .then((response) => response.json())
+        .then((data1) => this.displayWeather1(data1));
     },
     displayWeather: function(data) {
-        const { name } = data;
-        const { icon, description } = data.weather[0];
-        const { temp, humidity } = data.main;
-        const { speed } = data.wind;
-        const { temp_min } = data.main;
-        const { temp_max } = data.main;
-        const { pressure } = data.main;
+        const { name } = data.city;
+        // const { icon, description } = data.list[0].weather;
+        // const { temp, humidity } = data.main;
+        // const { speed } = data.list;
+        const { min } = data.list[0].temp;
+        const { max } = data.list[0].temp;
+        // const { pressure } = data.main;
         // const { country } = data.sys;
         document.querySelector(".city").innerText = "Weather in " + name;
-        document.querySelector(".icon").src = "https://openweathermap.org/img/wn/" + icon + ".png";
-        document.querySelector(".description").innerText = description;
-        document.querySelector(".temperature").innerText = temp + "°F";
-        document.querySelector(".humidity").innerText = "Humidity: " + humidity + " %";
-        document.querySelector(".wind").innerText = "Wind Speed: " + speed + "m/h";
-        document.querySelector(".mintemp").innerText = "Low for today: " + temp_min + "°F";
-        document.querySelector(".maxtemp").innerText = "High for today: " + temp_max + "°F";
+        document.querySelector(".mintemp").innerText = "Low for today: " + min + "°F";
+        document.querySelector(".maxtemp").innerText = "High for today: " + max + "°F";
         document.querySelector(".weather").classList.remove("loading");
         document.body.style.backgroundImage = "url('https://source.unsplash.com/random/2000x1000/?city/" + name + "')"
+    },
+    displayWeather1: function(data1){
+        const { temp, humidity } = data1.main;
+        const { icon, description } = data1.weather[0];
+        const { speed } = data1.wind;
+        document.querySelector(".temperature").innerText = temp + "°F";
+        document.querySelector(".humidity").innerText = "Humidity: " + humidity + " %";
+        document.querySelector(".icon").src = "https://openweathermap.org/img/wn/" + icon + ".png";
+        document.querySelector(".description").innerText = description;
+        document.querySelector(".wind").innerText = "Wind Speed: " + speed + " mph";
     },
     search: function() {
         this.fetchWeather(document.querySelector(".search-bar").value);
@@ -43,7 +48,7 @@ let weather = {
 
 let geocode = {
     reverseGeoCode: function(latitude, longitude) {
-        var api_key = 'GEOCODE API KEY';
+        var api_key = 'GEOLOCATION API KEY';
         var api_url = 'https://api.opencagedata.com/geocode/v1/json'
 
         var request_url = api_url +
@@ -66,7 +71,7 @@ let geocode = {
             if (request.status === 200) {
                 // Success!
                 var data = JSON.parse(request.responseText);
-                weather.fetchWeather(data.results[0].components.city);
+                weather.fetchWeather(data.results[0].components.city, data.results[0].components.state_code, data.results[0].components.country_code);
 
             } else if (request.status <= 500) {
                 // We reached our target server, but it returned an error
